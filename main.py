@@ -6,7 +6,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import smtplib
 from email.mime.text import MIMEText
-from api import get_direct, get_all
+from api import get_direct
 from storage import Storage
 from settings_local import CONF
 
