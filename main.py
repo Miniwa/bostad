@@ -26,7 +26,6 @@ def main():
 
     logger.info("--- START ---")
     result = get_direct()
-
     logger.info("Retrieved {0} housings".format(len(result)))
     if result:
         body = ""
@@ -55,6 +54,9 @@ def main():
             smtp_server.login(CONF["AUTH_USER"], CONF["AUTH_PWD"])
             smtp_server.send_message(msg)
             smtp_server.quit()
+
+            # Commit storage and log
+            storage.commit()
             logger.info("Message sent")
         except Exception as exc:
             logger.error("Unhandled exception: {0}".format(exc))

@@ -22,6 +22,9 @@ class Storage():
             Address TEXT
         )""")
 
+    def commit(self):
+        self._conn.commit()
+
     def has_address(self, address):
         return self.get_address(address) is not None
 
@@ -35,4 +38,3 @@ class Storage():
             raise ValueError("Duplicate entries are not allowed.")
 
         self._cursor.execute("""INSERT INTO Housing VALUES (?)""", (address,))
-        self._conn.commit()
