@@ -1,12 +1,17 @@
+#!/usr/bin/python3
+"""
+Main script.
+"""
 import smtplib
 from email.mime.text import MIMEText
 from api import get_direct, get_all
 from storage import Storage
 from settings_local import CONF
 
+
 def main():
     storage = Storage.create_or_open("housing.db")
-    result = get_all()
+    result = get_direct()
 
     if result:
         body = ""
